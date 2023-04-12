@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+
+.siblings * { 
+  display: block;
+  border: 2px solid lightgrey;
+  color: lightgrey;
+  padding: 5px;
+  margin: 15px;
+}
+
+div{
+	height: 450px;
+}
+div.box{
+	height: 530px;
+}
+div.result{
+	height: 400px;
+}
+.siblings{
+	height: 350px;
+	padding-right: 50px; 
+}
+span {
+	display: block;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#parent").on("click",function(){
+		$("#result1 span").parent().css({"color":"red", "border":"2px solid red"})
+	})
+	$("#parents").on("click",function(){
+		$("#result1 span").parents().css({"color":"green", "border":"2px solid green"})
+	})
+	$("#parents_sel").on("click",function(){
+		$("#result1 span").parents('.siblings').css({"color":"pink", "border":"2px solid pink"})
+	})
+	$("#parents_unt").on("click",function(){
+		$("#result1 span").parentsUntil('.siblings').css({"color":"skyblue", "border":"2px solid skyblue"})
+	})
+		
+	$(".rf").on("click",function(){
+		//$(this).prev().css("background","gold");
+		//$(this).parent().find("span").css("background","gold");
+		$(this).parents("ul").find("span").css("background","gold");
+	})
+  	
+});
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+	</p>	
+	<input type="button" value="parent" id="parent">
+	<input type="button" value="parents" id="parents">
+	<input type="button" value="parents_sel" id="parents_sel">
+	<input type="button" value="parents_unt" id="parents_unt">
+	
+	<div class="result" id="result1">
+	
+		<div style="width:500px;" class="siblings">div (great-grandparent)
+		    <ul>ul (grandparent)  
+		      <li>li (direct parent)
+		        <span>span</span>
+		        <button type="button" id="rfind1" class="rf">find_span</button>
+		      </li>
+		    </ul>   
+		  </div>
+	
+	</div>	
+	
+	
+	<div class="result" id="result2">
+	
+		<div style="width:500px;" class="siblings">div (great-grandparent)
+		    <ul>ul (grandparent)  
+		      <li>li (direct parent)
+		        <span>span</span>
+		        <button type="button" id="rfind2" class="rf">find_span</button>
+		      </li>
+		    </ul>   
+		  </div>
+	
+	</div>	
+</div>
+
+
+
+
+
+</body>
+</html>

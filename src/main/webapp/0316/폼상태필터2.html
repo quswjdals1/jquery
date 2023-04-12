@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+img{
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+}
+table{
+	border: 1px solid blue;
+}
+td{
+	width: 250px;
+	height: 50px;
+	text-align: center;
+}
+div{
+	border: 2px solid black;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(()=>{
+	$("#btn1").on("click",function(){
+		str="";
+		
+		$("input:checkbox:checked").each(function(){
+			str+=$(this).val()+" ";
+		})
+
+		
+		alert(str);
+	})
+	
+	$("#btn2").on("click",function(){
+		str="";
+		$("#spring option:selected").each(function(){
+			str+=$(this).val()+" "
+		})
+		vd=$("<div id='fs'></div>")
+		$("#result2").append(vd);
+		$("#fs").html(str);
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+	</p>	
+	<input type="button" value="확인" id="btn1">
+	<div id="result">
+		<form action="checkbox.jsp" method="post">
+			취 미 :
+			<input type="checkbox" name="hobby" value="여행" checked >여행
+			<input type="checkbox" name="hobby" value="장기">장기
+			<input type="checkbox" name="hobby" value="바둑">바둑
+			<input type="checkbox" name="hobby" value="독서" >독서
+			<input type="checkbox" name="hobby" value="낚시">낚시<br><br>
+			<input type="submit" value="전송">
+		</form>
+	</div>	
+</div>
+
+<div class="box">                                   
+	<form>
+	봄소식 : <select name="spring" id="spring" multiple size="6">
+				<option>개나리</option>
+				<option selected>진달래</option>
+				<option>민들레</option>
+				<option selected>벚꽃</option>
+				<option>목련</option>
+				<option>철쭉</option>
+			</select>
+			<input type="button" value="확인" id="btn2">
+			<div id="result2"></div>
+	</form>
+	
+</div>
+
+</body>
+</html>

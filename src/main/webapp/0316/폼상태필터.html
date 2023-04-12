@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+img{
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+}
+table{
+	border: 1px solid blue;
+}
+td{
+	width: 250px;
+	height: 50px;
+	text-align: center;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(()=>{
+	$("#btn1").on("click",function(){
+		$("form *:enabled").css("border","2px solid red");
+		$("form *:disabled").css("border","2px solid green");
+	})
+
+	//input에서 키가 입력되면 글자수를 가져옴
+	//jquery에서 .value는 .val()로 사용함
+	$('input:text').on("keyup",function(){
+		textvalue=$(this).val().trim();
+		if(textvalue.length>0){
+			//검사버튼을 사용가능하도록 변경
+			$("input[value=검사]").prop("disabled",false);
+		}else{
+			$("input[value=검사]").prop("disabled",true);
+		}
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+	</p>	
+	<input type="button" value="확인" id="btn1">
+	<div id="result">
+		<form> 
+			<input type="text" name="id" ><br>
+			<input type="button" disabled="disabled" onclick="alert('검사')" value="검사"><br>
+			<input type="password" name="pass"  ><br>
+			
+			<select name="disSelect" disabled>
+			      <option>Option1</option>
+			      <option>Option2</option>
+			      <option>Option3</option>
+			      <option>Option4</option>
+			</select>
+			<br>
+			<textarea name="enTextarea" rows=10 cols=20 >text</textarea><br>
+			<input type="button" value="확인" onclick="alert('hello')" disabled> <br>			
+		</form>
+	</div>	
+</div>
+
+
+</body>
+</html>

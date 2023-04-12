@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+	//버튼을 클릭하면
+	$("#btn1").on('click',()=>{
+		
+		$("#result1").css("background","yellow");
+		$("h1").css("color","blue");
+		$("#para").css("color","green");
+		$(".sample").css("color","red");
+		})
+		
+/*		
+	$("#result3 h1").on('click',(e)=>{
+		$(e.target).hide();
+	})
+*/	
+	$("#result3 h1").on('click',function(){
+		$(this).hide();
+	})
+})
+
+
+
+clickhide = (item)=>{
+	$(item).hide();
+}
+
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<input type="button" value="확인" id="btn1">
+	<div id="result1">
+		<h1>제목입니다.</h1>
+		<h2 id="para">작은 제목입니다.</h2>
+		<h2 class="sample"> 샘플입니다 </h2>
+	</div>
+</div>
+
+
+<div class="box">
+	<div id="result2">
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다1</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다2</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다3</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다4</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다5</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다6</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다7</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다8</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다9</h1>
+		<h1 onclick="clickhide(this)">클릭하면 사라집니다10</h1>	
+	</div>
+</div>
+
+<div class="box">
+	<div id="result3">
+		<h1>클릭하면 사라집니다1</h1>
+		<h1>클릭하면 사라집니다2</h1>
+		<h1>클릭하면 사라집니다3</h1>
+		<h1>클릭하면 사라집니다4</h1>
+		<h1>클릭하면 사라집니다5</h1>
+		<h1>클릭하면 사라집니다6</h1>
+		<h1>클릭하면 사라집니다7</h1>
+		<h1>클릭하면 사라집니다8</h1>
+		<h1>클릭하면 사라집니다9</h1>
+		<h1>클릭하면 사라집니다10</h1>	
+	</div>
+</div>
+
+</body>
+</html>

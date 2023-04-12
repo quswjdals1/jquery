@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+img{
+	width: 50px;
+	height: 50px;
+}
+#test{
+	display: inline-block;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(()=>{
+	$("#append").on("click",function(){
+		
+		
+		vimg=$("<img src='../images/Koala.jpg' alt='koala'>")
+		$("#result1").append(vimg);
+		
+	})
+	
+	$("#prepend").on("click",function(){
+		
+		
+		vimg=$("<img src='../images/Koala.jpg' alt='koala'>")
+		$("#result1").prepend(vimg);
+	})
+	
+	$("#before").on("click", function(){
+		vimg=$("<img src='../images/Koala.jpg' alt='koala'>")
+		$("#result2").before(vimg);
+	})
+	$("#after").on("click", function(){
+		vimg=$("<img src='../images/Koala.jpg' alt='koala'>")
+		$("#result2").after(vimg);
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+		이미지를 만들어서 id="result1"에 추가한다
+	</p>	
+	<input type="button" value="뒤로추가" id="append">
+	<input type="button" value="앞으로추가" id="prepend">
+	<div id="result1">
+	<p id="test">코알라</p>
+	</div>	
+
+</div>
+
+
+<div class="box">
+	<p>
+		이미지를 만들어서 id="result1"에 추가한다
+	</p>	
+	<input type="button" value="앞으로추가" id="before">
+	<input type="button" value="뒤로추가" id="after">
+	<div id="result2">
+	<p id="p1">코알라</p>
+	</div>	
+
+</div>
+
+
+
+</body>
+</html>

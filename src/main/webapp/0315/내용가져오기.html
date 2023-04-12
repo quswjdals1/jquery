@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+img{
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+}
+span{
+	background: yellow;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(()=>{
+	$("#btn1").on('click',function(){
+		alert($('body').html());
+		alert($('body').text());
+	})
+	
+	$("#btn2").on('click',function(){
+		alert($('#result2 p').html());
+	})
+	$("#btn3").on('click',function(){
+		alert($('#result2 p').text());
+	})
+	
+	
+	$("#btn4").on('click',function(){
+		str="";
+		/*
+		$('#result2 p').each(function(i){
+			str+=$('#result2 p').eq(i).html()+"\n";
+		})
+		*/
+		/*
+		$('#result2 p').each(function(){
+			str+=$(this).html()+"\n";
+		})
+		*/
+		$('#result2 p').each(function(i,v){
+			str+=$(v).html()+"\n";
+		})
+		alert(str);
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+		body 내용가져오기<br>
+		html()<br>
+		text()
+	</p>	
+	<input type="button" value="확인" id="btn1">
+	<div id="result1">hello</div>
+	
+</div>
+
+
+
+<div class="box">
+	<p>
+		p 내용가져오기<br>
+		html(): 첫번째 p태그 만을 대상으로 하여 내용을 가져온다<br>
+		p태그가 여러개일 경우 모든 p태그를 대상으로 하려면 반복문이 필요하다.<br>
+		$(요소).each(function(arg1,arg2){})<br>
+		$.each(요소,function(arg1,arg2){})<br>
+		text()
+	</p>	
+	<input type="button" value="p_html" id="btn2">
+	<input type="button" value="p_text" id="btn3">
+		<input type="button" value="Allp_html" id="btn4">
+	<div id="result2">
+		<p><span>무궁화 꽃</span>이 피었습니다</p>
+		<p><span>매화 꽃</span>이 피었습니다</p>
+		<p><span>산수유 꽃</span>이 피었습니다</p>
+		<p><span>목련 꽃</span>이 피었습니다</p>
+		<p><span>진달래 꽃</span>이 피었습니다</p>
+	</div>
+	
+</div>
+
+</body>
+</html>

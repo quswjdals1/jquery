@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+.visible, .hidden{
+	height: 50px;
+}
+#res{
+	overflow: auto;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(()=>{
+	$("#btn1").on("click",function(){
+		intro = $("#intro").val().replaceAll(/\n/g,"<br>");
+		str="";
+		str +="이름: "+$("#user").val()+"<br>";
+		str +="성별: "+$("#gend").val()+"<br>";
+		str +="소개: "+intro+"<br>";
+		str +="직업: "+$("#work").val()+"<br>";
+		
+		$("#res").html(str);
+	})
+	$("#btnchange").on("click",function(){
+		
+		name = prompt("이름을 입력하세요.")
+		
+		$("#user").val(name);
+		
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+	</p>	
+	<input type="button" value="확인" id="btn1">
+	<div id="result1">
+		<form onsubmit="return false;">
+		  <label for="user">이름</label>
+				<input type="text" id="user" value="korea"><br>
+				<label >성별</label> 
+				  <input type="radio" id="gend" name="gend" value="남자" checked >남자
+				  <input type="radio" id="gend" name="gend" value="여자"  >여자<br>
+				  <label for="intro">소개</label> 
+				<textarea id="intro" cols="40" rows="4"></textarea> <br>
+				 <label for="work">직업</label>
+				 <select id="work">
+				   <option value="programmer">프로그래머</option>
+				   <option value="progammer">프로게이머</option>
+				   <option value="whitehand">백수</option>
+				 </select><br>
+				<button type="button" id="btnview">조사하기 </button>
+				<button  id="btnchange">이름변경 </button>
+		</form>
+
+	</div>	
+	<div id="res"></div>
+
+</div>
+
+
+
+</body>
+</html>

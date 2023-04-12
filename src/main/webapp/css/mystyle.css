@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+h1{
+	text-align: center;
+}
+form {
+	margin: 30px auto;
+	height: 500px;
+}
+fieldset{
+	margin:0px auto;
+	padding: 30px;
+	width: 250px;
+}
+label{
+	display: inline-block;
+	width: 60px;
+}
+textarea {
+	margin-left:64px;
+	width: 171px;
+}
+div{
+	border : 1px solid blue;
+	width: 500px;
+	height: 200px;
+	margin: 10px auto;
+	padding: 20px;
+}
+div.box{
+	box-sizing:border-box;
+	border : 1px solid blue;
+	width: 95%;
+	height: auto;
+	margin: 10px;
+	padding: 20px;
+}
+#result, #result2,#result3,#result4,#result5,#result6, #result7,#result8,#result9,#result10,#result11{
+	box-sizing: border-box;
+	width: 90%;
+	height: auto;
+	padding: 10px;
+	margin: 10px;
+	border: 1px dotted green; 	
+}
+.box input[type=button]{
+}

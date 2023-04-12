@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+img{
+	width: 100px;
+	height: 100px;
+	margin: 5px;
+}
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+$(()=>{
+	$("#btn1").on("click",()=>{
+		p=$("<p class='pp' onclick='pclick(this)'>hello jquery</p>");
+		$("#result1").append(p);
+	})
+	
+	$("#btn2").on("click",()=>{
+		p=$("<p></p>",{
+			"class" : "pp2",
+			"text" : "hello jquery",
+			"click" : function(){
+				$(this).css("background","pink");
+			}
+		})
+		$("#result2").append(p);
+	})
+	
+	
+	
+	$("#btn3").on("click",()=>{
+		p=$("<p></p>",{
+			"class" : "pp2",
+			"text" : "hello jquery",
+		})
+		$("#result3").append(p);
+	})
+	
+
+	
+	$("#btn4").on("click",()=>{
+		imgs=["../images/coffee1.jpg","../images/Koala.jpg","../images/Penguins.jpg"
+			,"../images/spongebob.png","../images/Tulips.jpg","../images/국화.jpg"
+			,"../images/국화8.jpg","../images/뱅쇼.jpg","../images/봄꽃3.jpg"
+			,"../images/셔틀콕.jpg"];
+		rand = parseInt(Math.random()*imgs.length);
+		start=imgs[rand].lastIndexOf('/')+1;
+		end=imgs[rand].lastIndexOf(".");
+		
+		valt=imgs[rand].slice(start,end);
+		
+		vimg=$("<img>",{
+			"src" : imgs[rand],
+			"alt" : valt,
+			"class" : 'image'
+		})
+		
+		$("#result4").append(vimg);
+		
+	})
+	
+
+	
+	pclick=(pel)=>{
+		$(pel).css("background","yellow");
+	}
+	
+	//pp2는 실행 후에 동적으로 생성된 요소이다. 따라서 html을 그리기전에 먼저 실행되는 아래코드는 정상
+	//적으로 적용 안됨
+	/*
+	$(".pp2").on("click",()=>{
+		alert("hello");
+	})
+	*/
+	//pp2가 실행후에 동적으로 새롭게 생성된 요소이고, 그 새로운 요소에 이벤트 핸들러를 작성
+	//적용됨
+	$(document).on("click",".pp2",()=>{
+		alert("hello");
+	})
+	$(document).on("click",".image",function(){
+		$(this).css("border","3px solid red");
+	})
+})
+
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+	새로운 요소 생성<br>
+	$(html문장)==createElement<br>
+	p=$("&lt;p class='pp' onclick='pclick(this)'>hello jquery&lt;/p>");
+	</p>	
+	<input type="button" value="확인" id="btn1">
+	<div id="result1"></div>
+	
+</div>
+
+<div class="box">
+	<pre>
+	새로운 요소 생성<br>
+	$("태그이름",{속성들})<br>
+	p=$("&lt;p>&lt;/p>",{
+			"class" : "pp2",
+			"text" : "hello jquery",
+			"click" : function(){
+				$(this).css("background","pink");
+			}
+		})
+	</pre>	
+	<input type="button" value="확인" id="btn2">
+	<div id="result2"></div>
+	
+</div>
+
+
+
+<div class="box">
+	<pre>
+	새로운 요소 생성<br>
+	$("태그이름",{속성들})<br>
+	p=$("&lt;p>&lt;/p>",{
+			"id" : "pp2",
+			"text" : "hello jquery",
+		})
+	</pre>	
+	<input type="button" value="확인" id="btn3">
+	<div id="result3"></div>
+	
+</div>
+
+
+<div class="box">
+	<pre>
+	</pre>	
+	<input type="button" value="확인" id="btn4">
+	<div id="result4"></div>
+	
+</div>
+
+</body>
+</html>

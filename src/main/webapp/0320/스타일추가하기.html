@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+<style>
+.font20{
+	font-size:2.0em;
+}
+.bcolor{
+	background: lime;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	
+	$("#result1 p").on("click",function(){
+		//$(this).addClass("font20");
+		$(this).css("font-size","2.0em");
+	})
+	$("#result1 p").on("dblclick",function(){
+		//$(this).addClass("font20");
+		$(this).css("font-size","1.0em");
+	})
+	
+	$("#result2 p").on("mouseover",function(){
+		//$(this).addClass("font20");
+		$(this).addClass("bcolor");
+	})
+	$("#result2 p").on("mouseout",function(){
+		//$(this).addClass("font20");
+		$(this).removeClass("bcolor");
+	})
+	
+	$("#result3 p").on("click",function(){
+		//$(this).addClass("font20");
+		$(this).toggleClass("font20");
+	})
+	$("#result4 p").on("click",function(){
+		//$(this).addClass("font20");
+		if($(this).hasClass("bcolor")){
+			$(this).removeClass("bcolor");
+		}else{
+			$(this).addClass("bcolor");
+		}
+	})
+  	
+});
+</script>
+</head>
+<body>
+<div class="box">
+	<p>
+	click : addClass("font20")<br>
+	dblclick: removeClass("font20")<br>
+	</p>	
+	<input type="button" value="prev" id="prev">
+
+	<div class="result" id="result1">
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+
+</div>
+
+
+<div class="box">
+	<p>
+	mouseover: addClass("bcolor")<br>
+	mouseout: removeClass("bcolor")<br>
+	</p>	
+	<input type="button" value="prev" id="prev">
+
+	<div class="result" id="result2">
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+
+</div>
+
+
+<div class="box">
+	<p>
+	click : toggleClass("font20")<br>
+	</p>	
+	<input type="button" value="prev" id="prev">
+
+	<div class="result" id="result3">
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+
+</div>
+
+
+<div class="box">
+	<p>
+	click : hasClass("bcolor")<br>
+	</p>	
+	<input type="button" value="prev" id="prev">
+
+	<div class="result" id="result4">
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+		<p>무궁화 꽃이 피었습니다</p>
+	</div>
+
+</div>
+
+
+</body>
+</html>

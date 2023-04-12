@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 이 문서는 mybatis의 환경 설정에 사용되는 xml문서입니다. -->
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- DB연결 정보가 저장된 properties 파일 정보 설정하기 -->
+	<properties resource="kr/or/ddit/mybatis/config/dbinfo.properties"></properties>
+
+	<!-- 기본 설정 세팅 -->
+	<settings>
+		<!-- 데이터가 null로 전달되었으면 빈칸으로 인식하지 말고 null로 인식해라 라는 설정 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+
+	<!-- typeAlais 설정 : mapper에서 vo객체정보가 들어있는 파일의 경로를 alias로 대신 쓸 수 있다.-->
+	<typeAliases>
+		<typeAlias type="kr.or.ddit.member.vo.MemberVO" alias="memberVo"/>
+		<typeAlias type="kr.or.ddit.lprod.vo.LprodVO" alias="lprodVo"/>
+		<typeAlias type="kr.or.ddit.buyer.vo.BuyerVO" alias="buyerVo"/>
+		<typeAlias type="kr.or.ddit.prod.vo.ProdVO" alias="prodVo"/>
+		<typeAlias type="kr.or.ddit.member.vo.ZipVO" alias="zipVo"/>
+		<typeAlias type="kr.or.ddit.board.vo.BoardVO" alias="boardVo"/>
+		<typeAlias type="kr.or.ddit.board.vo.ReplyVO" alias="replyVo"/>
+	</typeAliases>
+	
+
+	<!-- DB연결 설정하기 -->
+	<environments default="oracleEnv">
+		<environment id="oracleEnv">
+			<transactionManager type="JDBC"></transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${user}"/>
+				<property name="password" value="${pass}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- DB에 사용되는 sql문이 저장된 mapper파일 등록하는 부분 -->
+	
+	<mappers>
+		<mapper resource="kr/or/ddit/mybatis/mapper/lprod-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/member-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/buyer-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/prod-mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/mapper/board-mapper.xml"/>
+	</mappers>
+	
+
+</configuration>

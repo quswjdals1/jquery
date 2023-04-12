@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+div.box{
+	height: auto;
+}
+#result{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	height: 80%;
+}
+#result1{
+	height: auto;
+}
+
+#result div{
+	border: 1px solid blue;
+	padding: 10px;
+	margin: 5px;
+	flex: 1;
+	width: 300px;
+}
+
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+xhr = new XMLHttpRequest();
+$(()=>{
+	
+	$("#txt").on("click",function(){
+		//요청
+		xhr.open("get","text.jsp",true);
+		xhr.send();
+		
+		//응답
+		xhr.onreadystatechange=function(){
+			if(this.readyState==4&&this.status==200){
+				
+				res=this.responseText;
+				res=res.split("/");
+				ul = document.createElement("ul");
+				res.forEach(function(ele){
+					li=document.createElement("li");
+					text=document.createTextNode(ele);
+					li.appendChild(text);
+					ul.appendChild(li);
+				})
+
+				document.getElementById("result1").appendChild(ul);
+			}
+		}
+	})
+	
+	
+	$("#jarr").on("click",function(){
+		
+		xhr.open("get","jsonArr.jsp",true);
+		xhr.send();
+		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				res=this.responseText;
+				res=JSON.parse(res);
+				ol="<ol>";
+				res.forEach(function(ele){
+					ol+="<li>"+ele+"</li>";
+				})
+				ol+="</ol>";
+				document.getElementById("result2").innerHTML=ol;
+			}
+		}
+	})
+	
+	
+	
+	$("#jobj").on("click",function(){
+		
+		xhr.open("get","jsonObj.jsp",true);
+		xhr.send();
+		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				res=this.responseText;
+				res=JSON.parse(res);
+				str="";
+				str+="이름: "+res["name"]+"<br>";
+				str+="아이디: "+ res["id"]+"<br>";
+				str+="전화번호: "+res["tel"]+"<br>";
+				str+="이메일: "+res["mail"]+"<br>";
+				document.getElementById("result3").innerHTML=str;
+			}
+		}
+		
+	})
+	
+	$("#jobarr").on("click",function(){
+		
+		xhr.open("get","jsonObjArr.jsp",true);
+		xhr.send();
+		
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				res=this.responseText;
+				res=JSON.parse(res);
+				
+				ul="<ul>";
+				res.forEach(function(ele,i){
+					ul+="<li>"+(i+1)+"번쨰 <br>";
+					ul+="이름: "+ele["name"]+"<br>";
+					ul+="아이디: "+ele["id"]+"<br>";
+					ul+="전화번호: "+ele["tel"]+"<br>";
+					ul+="이메일: "+ele["mail"]+"<br>";
+					ul+="</li><br>";
+				})
+				ul+="</ul>";
+				
+				document.getElementById("result4").innerHTML=ul;
+			}
+		}
+	})
+	
+	$("#sync").on("click",function(){
+		location.href="sync.jsp";
+	})
+	
+})
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+
+	</p>	
+	<input type="button" value="동기" id="sync">
+	<input type="button" value="text" id="txt">
+	<input type="button" value="json배열" id="jarr">
+	<input type="button" value="jsonObject" id="jobj">
+	<input type="button" value="jsonObj배열" id="jobarr">
+
+	<div id="result">
+		<div class="result" id="result1"></div>	
+		<div class="result" id="result2"></div>	
+		<div class="result" id="result3"></div>	
+		<div class="result" id="result4"></div>	
+	</div>
+</div>
+
+
+
+
+
+
+</body>
+</html>

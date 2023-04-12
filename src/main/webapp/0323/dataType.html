@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/mystyle.css">
+
+<style type="text/css">
+div.box{
+	height: auto;
+}
+#result{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	height: 80%;
+}
+#result1{
+	height: auto;
+}
+
+#result div{
+	border: 1px solid blue;
+	padding: 10px;
+	margin: 5px;
+	flex: 1;
+	width: 300px;
+}
+
+</style>
+
+<script src="../js/jquery-3.6.4.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+xhr = new XMLHttpRequest();
+$(()=>{
+	
+	$("#txt").on("click",function(){
+		
+		$.get(
+				"http://localhost/jqpro/0322/text.jsp",
+				function(res){
+					
+					res = res.split("/");
+					ul = "<ul>";
+					res.forEach(function(ele,idx){
+						ul+="<li>"+ele+"</li>";
+					})
+					ul+="</ul>";
+					$("#result1").html(ul);
+				},
+				"text"
+		)
+		
+		/*
+		$.ajax({
+			url : "http://localhost/jqpro/0322/text.jsp",
+			type : "get",
+			success : function(res){
+				
+				res = res.split("/");
+				ul = "<ul>";
+				res.forEach(function(ele,idx){
+					ul+="<li>"+ele+"</li>";
+				})
+				ul+="</ul>";
+				$("#result1").html(ul);
+			},
+			error : function(xhr){
+				alert("상태: "+xhr.status);
+			},
+			dataType : "text"
+		})
+		*/
+	})
+	
+	
+	$("#jarr").on("click",function(){
+		$.ajax({
+			url : "http://localhost/jqpro/0322/jsonArr.jsp",
+			type : "get",
+			success : function(res){
+				ol = "<ol>";
+				$.each(res,function(idx,ele){
+					ol+=`<li> ${ele} </li>`;
+				})
+				ol+="<ol>";
+				$("#result2").html(ol);
+			},
+			error : function(xhr){
+				alert("상태: "+xhr.status);
+			},
+			dataType : "json"
+		})
+	
+	})
+	
+	
+	
+	$("#jobj").on("click",function(){
+		$.ajax({
+			url : "http://localhost/jqpro/0322/jsonObj.jsp",
+			type : "get",
+			success : function(res){
+
+				str="";
+				$.each(res,function(idx){
+					
+					str+=idx+": "+ res[idx]+"<br>"
+				})
+				$("#result3").html(str);
+			},
+			error : function(xhr){
+				alert("상태: "+xhr.status);
+			},
+			dataType : "json"
+		})
+		
+	})
+	
+	$("#jobarr").on("click",function(){
+		$.ajax({
+			url : "/jqpro/0322/jsonObjArr.jsp",
+			type : "get",
+			success : function(res){
+				ul="<ul>";
+				$.each(res,function(idx,ele){
+					ul+="<li>"+(idx+1)+"번째 사람 <br>";
+					ul+="id: "+ele["id"]+"<br>";
+					ul+="이름: "+ele["name"]+"<br>";
+					ul+="tel: "+ele["tel"]+"<br>";
+					ul+="mail: "+ele["mail"]+"<br>";
+				})
+				ul+="</ul>";
+				$("#result4").html(ul);
+			},
+			error : function(xhr){
+				alert("상태: "+xhr.status);
+			},
+			dataType : "json"
+		})
+
+	})
+	
+
+	
+})
+</script>
+</head>
+<body>
+
+
+<div class="box">
+	<p>
+
+	</p>	
+	<input type="button" value="text" id="txt">
+	<input type="button" value="json배열" id="jarr">
+	<input type="button" value="jsonObject" id="jobj">
+	<input type="button" value="jsonObj배열" id="jobarr">
+
+	<div id="result">
+		<div class="result" id="result1"></div>	
+		<div class="result" id="result2"></div>	
+		<div class="result" id="result3"></div>	
+		<div class="result" id="result4"></div>	
+	</div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
